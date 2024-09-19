@@ -45,6 +45,7 @@ class TaskSelectFragment : DialogFragment() {
 
         super.onViewCreated(view, savedInstanceState)
 
+        //
         taskViewModel.isBigTask.value = true
 
     }
