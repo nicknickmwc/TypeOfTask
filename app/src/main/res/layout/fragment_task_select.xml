@@ -2,24 +2,45 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
     tools:context=".TaskSelectFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
 
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:padding="15dp"
+        android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/editTextText2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="text"
-            android:text="Name" />
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:text="Выберите тип задачи"
+                android:textSize="17sp"
+                >
+            </TextView>
+
+            <RadioButton
+                android:id="@+id/big_task_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Большая задача" />
+
+            <RadioButton
+                android:id="@+id/small_task_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Маленькая задача" />
+        </RadioGroup>
     </LinearLayout>
 
 </FrameLayout>

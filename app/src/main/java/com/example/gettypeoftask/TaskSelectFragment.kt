@@ -41,6 +41,14 @@ class TaskSelectFragment : DialogFragment() {
         return inflater.inflate(R.layout.fragment_task_select, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        super.onViewCreated(view, savedInstanceState)
+
+        taskViewModel.isBigTask.value = true
+
+    }
+
     companion object {
         /**
          * Use this factory method to create a new instance of

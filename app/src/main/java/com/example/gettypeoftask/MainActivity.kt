@@ -16,13 +16,12 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
-        val taskSelectFragment = TaskSelectFragment()
-        taskSelectFragment.show(supportFragmentManager, "dfd")
-
-
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
+
+        val taskSelectFragment = TaskSelectFragment()
+        taskSelectFragment.show(supportFragmentManager, "dfd")
 
 
 
