@@ -5,10 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.RadioButton
-import android.widget.RadioGroup
-import androidx.fragment.app.DialogFragment
+import android.widget.TextView
 import androidx.fragment.app.activityViewModels
 
 // TODO: Rename parameter arguments, choose names that match
@@ -18,15 +15,16 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [TaskSelectFragment.newInstance] factory method to
+ * Use the [TaskCreateFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class TaskSelectFragment : DialogFragment() {
+class TaskCreateFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
 
     private val taskViewModel: TaskViewModel by activityViewModels()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,47 +39,26 @@ class TaskSelectFragment : DialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_task_select, container, false)
+        return inflater.inflate(R.layout.fragment_task_create, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
         super.onViewCreated(view, savedInstanceState)
 
-        //////////
+        val textView = view.findViewById<TextView>(R.id.text_view)
 
-        //val smallTaskRadioButton = view.findViewById<RadioButton>(R.id.small_task_button)
-        //val radioGroup = view.findViewById<RadioGroup>(R.id.select_radio_group)
+        taskViewModel.isBigTask.observe(viewLifecycleOwner) {isBigTask->
 
-        val bigTaskRadioButton = view.findViewById<RadioButton>(R.id.big_task_button)
-        val selectButton = view.findViewById<Button>(R.id.select_button)
-
-        //var isBigTask = false
-
-
-        selectButton.setOnClickListener{
-
-            taskViewModel.isBigTask.value = bigTaskRadioButton.isChecked
-
-            dismiss()
-            openNewFragment()
+            if (isBigTask) {
+                textView.text = "Is the big task"
+            }
+            else {
+                textView.text = "Is the small task"
+            }
 
         }
 
-
     }
-
-    fun openNewFragment():Unit {
-
-        val taskCreateFragment = TaskCreateFragment()
-        val fragmentManager = activity?.supportFragmentManager
-        val transaction = fragmentManager?.beginTransaction()
-        transaction?.replace(R.id.fragment_container_view, taskCreateFragment)
-        transaction?.commit()
-
-    }
-
-
 
     companion object {
         /**
@@ -90,12 +67,12 @@ class TaskSelectFragment : DialogFragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment TaskSelectFragment.
+         * @return A new instance of fragment TaskCreateFragment.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            TaskSelectFragment().apply {
+            TaskCreateFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

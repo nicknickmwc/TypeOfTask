@@ -15,6 +15,7 @@
         android:orientation="vertical">
 
         <RadioGroup
+            android:id="@+id/select_radio_group"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             >
@@ -40,6 +41,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Маленькая задача" />
+
+            <Button
+                android:id="@+id/select_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="OK"
+                android:layout_marginHorizontal="10dp"
+                />
         </RadioGroup>
     </LinearLayout>
 
